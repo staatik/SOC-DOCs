@@ -1,0 +1,59 @@
+flowchart TD
+    subgraph P0["Phase 0 — Foundation"]
+        G0["Governance:<br/>Charter & RACI"]
+        A0["Architecture:<br/>Service Map"]
+        M0["Metrics:<br/>SOC-CMM Baseline"]
+    end
+
+    subgraph P1["Phase 1 — Plumbing"]
+        T1["Tooling:<br/>core stack setup guides<br/>(Sentinel, Wiz, S1)"]
+        I1["Infrastructure Engineering"]
+        D1["Data & Log Management"]
+    end
+
+    subgraph P2["Phase 2 — Signal"]
+        TI["Threat Intel"]
+        DE["Detection Engineering"]
+        VM["Vulnerability Management"]
+    end
+
+    subgraph P3["Phase 3 — Response Capability"]
+        IAM1["IAM/NHI:<br/>human access"]
+        T3["Tooling:<br/>TheHive / Cortex setup"]
+        IR["Incident Response:<br/>process → playbooks → runbooks"]
+    end
+
+    subgraph P4["Phase 4 — Depth & Hardening"]
+        DFIR["DFIR"]
+        CM["Change Management"]
+        VMD["Vendor & MDR Mgmt"]
+        COMMS["Comms Templates"]
+    end
+
+    subgraph P5["Phase 5 — Maturity & Scale"]
+        MET["Metrics:<br/>KPIs & dashboards"]
+        GRC["GRC crosswalk"]
+        TRAIN["Training & Tabletop"]
+        BC["Business Continuity"]
+    end
+
+    subgraph P6["Phase 6 — Advanced Layer"]
+        AGENT["Agentic Ops<br/>+ NHI: agent credentials"]
+    end
+
+    A0 --> T1
+    I1 --> D1 --> DE
+    T1 --> DE
+    T1 --> TI
+    TI --> DE
+    DE --> IR
+    T3 --> IR
+    IAM1 --> IR
+    IR --> DFIR
+    IR --> TRAIN
+    IR --> CM
+    IR --> BC
+    M0 --> MET
+    G0 --> GRC
+    IR --> AGENT
+    IAM1 --> AGENT
